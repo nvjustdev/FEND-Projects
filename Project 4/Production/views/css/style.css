@@ -31,14 +31,13 @@ form {
 
 .mover {
   position: fixed;
-  width: 256px;
+  width: 73.33px;
   z-index: -1;
 }
 
 .randomPizzaContainer {
   float: left;
   display: flex;
-  width: 33.3333%;
 }
 
 .randomPizzaContainer:after {
