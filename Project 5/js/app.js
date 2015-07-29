@@ -42,7 +42,7 @@ function appViewModel() {
 	self.isInfoWindowVisible = ko.observable(false);
 	self.shouldShowSearchSection = ko.observable(true);
 
-	self.schoolTypeInitial = ko.computed(function(){
+	self.schoolTypeInitial = ko.computed(function() {
 		return ko.utils.arrayMap(self.schools(), function(item) {
             return item.schoolType.slice(0, 1);
         });
@@ -70,6 +70,7 @@ function appViewModel() {
 	//If there's no search text, show all the schools
 	//Changing both the type of the object and the search string to be the same case
 	this.filterSchoolsByType = function() {
+		console.log(self.searchType());
 		$.each(self.schools(), function(index) {
 			if (self.searchType().length > 0) {
 				console.log(self.searchType())
@@ -177,36 +178,32 @@ function appViewModel() {
 	google.maps.event.addDomListener(window, 'load', initialize);
 
 	/* Auto complete */
-    var schoolTypeInformation = [
-        {
-	        "id": "1",
-	        "value": "Elementary",
-	        "label": "Elementary"
-	    },
-	    {
-	        "id": "17",
-	        "value": "Middle",
-	        "label": "Middle"
-	    },
-	    {
-	        "id": "18",
-	        "value": "High",
-	        "label": "High"
-	    },
-	    {
-	        "id": "20",
-	        "value": "Private",
-	        "label": "Private"
-	    },
-	    {
-	        "id": "22",
-	        "value": "K-8",
-	        "label": "K-8"
-	    }
-	];
+	self.searchOptions = ["Elementary", "Middle", "High", "Private", "K-8"];
 }
 
 ko.applyBindings(new appViewModel());
+
+// ko.components.register('message-editor', {
+//     viewModel: function(params) {
+//         self.searchType = ko.observable(params);
+//     },
+//     template: ''
+// });
+
+/* Keyboard */
+ko.bindingHandlers.executeOnEnter = {
+    init: function (element, valueAccessor, allBindings, viewModel) {
+        var callback = valueAccessor();
+        $(element).keypress(function (event) {
+            var keyCode = (event.which ? event.which : event.keyCode);
+            if (keyCode === 13) {
+                callback.call(viewModel);
+                return false;
+            }
+            return true;
+        });
+    }
+};
 
 
 	// var geocoder = new google.maps.Geocoder();
