@@ -10,15 +10,30 @@
 
 	<!-- CSS Stylesheets -->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- JavaScripts -->
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places?key=AIzaSyARNPk6ayJtO0mX-dKPhcuUL1XkbfyLpwI"></script>
 </head>
 <body>
 	<!-- This is the place where we'll be displaying the map -->
 	<div id="googlemap-canvas"></div>
 
+	<!-- This is the search bar -->
+	<div class="searchSection" data-bind="visible: shouldShowSearchSection">
+		<form data-bind="submit: filterSchoolsByType">
+			<input id="filterField" type="text" placeholder="Filter the school list by type" data-bind="value:searchType, selectOnFocus: true">
+			<input type="submit" value="Search" id="submit">
+			<p data-bind="visible: searchType().length > 0, click: clearFilter" class="clearbutton">Clear filter</p>
+		</form>
+	</div>
+
+	<!-- This is the review section -->
+	<div class="reviewSection" data-bind="visible: isInfoWindowVisible">
+		<p>Review Section</p>
+	</div>
 	<!-- JavaScripts -->
-	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places?key=AIzaSyARNPk6ayJtO0mX-dKPhcuUL1XkbfyLpwI"></script>
 	<script type="text/javascript" src="js/app.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>
 </html>
