@@ -27,9 +27,39 @@
 	<div class="searchSection" data-bind="visible: shouldShowSearchSection">
 		<form data-bind="submit: filterSchoolsByType">
 			<input id="filterField" type="text" placeholder="Filter the school list by type" data-bind="jqAuto: { value: searchType, source: searchOptions }, selectOnFocus: true, executeOnEnter: filterSchoolsByType" >
-			<input type="submit" value="Search" id="submit">
-			<p data-bind="visible: searchType().length > 0, click: clearFilter" class="clearbutton">Clear filter</p>
+			<!-- <input id="filterField" type="text" placeholder="Filter the school list by type" data-bind="jqAuto: { value: searchType, source: searchOptions }, selectOnFocus: true" > -->
+			<input type="submit" value="Look up" id="submit">
+			<span data-bind="visible: searchType().length > 0, text: "></span>
+			<p data-bind="visible: searchType().length > 0, click: clearFilter" class="clearbutton">Clear Search</p>
 		</form>
+	</div>
+
+	<!-- This is the toggle color coded marker section -->
+	<div class="colorCodedSection" data-bind="visible: shouldShowSearchSection">
+		<form data-bind="submit: toggleColorCodedMarkers">
+			<input type="submit" data-bind="value: toggleButtonName" id="toggle">
+		</form>
+		<div class="legend" data-bind="visible: isColorMarkerShown">
+			<h2>Color Legend</h2>
+			<ul id="legend-list">
+				<li id="elementary">Elementary Schools</li>
+				<li id="middle">Middle Schools</li>
+				<li id="high">High Schools</li>
+				<li id="private">K12 Private Schools</li>
+				<li id="k8">K8 Private Schools</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- This is the list view section -->
+	<div class="listViewSection" data-bind="visible: shouldShowSearchSection() && !isColorMarkerShown()">
+		<h2>List of Schools</h2>
+		<ul data-bind="foreach: schools">
+       		<li data-bind="text: schoolName, click: $parent.setCurrentSchoolIndex.bind($data, $index)"></li>
+    	</ul>
+<!--     	<form data-bind="submit: clearFilter">
+			<input type="submit" value="Show All" id="showAllSchools" data-bind="enable: !isShowingAll()">
+		</form> -->
 	</div>
 
 	<!-- This is the review section -->

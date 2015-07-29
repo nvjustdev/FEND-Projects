@@ -10,9 +10,20 @@
   position: absolute;
   top: 25px;
   right: 10px;
-  background-color: rgba(255,255,255, 0.9);
+  background-color: rgba(0,0,255,0.1);
   border: 1px solid gray;
-  padding: 15px 10px;
+  padding: 10px;
+  opacity: 1;
+}
+
+.colorCodedSection {
+  position: absolute;
+  top: 75px;
+  right: 10px;
+  background-color: rgba(125,125,125,0.1);
+  border: 1px solid gray;
+  padding: 10px;
+  opacity: 1;
 }
 
 .searchSection input {
@@ -31,3 +42,76 @@
   max-height: 90%;
   border: 1px solid gray;
 }
+
+.clearbutton {
+	text-decoration: underline;
+	color: rgb(255, 0, 0);
+	font-size: 16px;
+}
+
+#submit {
+	width: 60px;
+	font-weight: bolder;
+}
+
+#toggle {
+	width: 150px;
+}
+
+#legend-list {
+	list-style-type: none;
+	float: left;
+	font-weight: bold;
+	padding: 0;
+}
+
+.legend h2 {
+	margin: 20px 0 -10px 0;
+}
+
+#elementary {
+	color: blue;
+}
+
+#middle {
+	color: yellow;
+}
+
+#high {
+	color: green;
+}
+
+#private {
+	color: purple;
+}
+
+#k8 {
+	color: red;
+}
+
+.listViewSection {
+	  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  top: 125px;
+  right: 10px;
+  background: rgba(255,255,255, 0.9);
+  width: 25%;
+  max-height: 100%;
+  border: 1px solid gray;
+}
+
+.listViewSection ul {
+	list-style-type: none;
+	text-align: left;
+	padding: 10px 0 0 20px;
+	margin: 0 0 10px 0;
+}
+
+.listViewSection h2 {
+	margin: 10px 10px 0 10px;
+	text-align: center;
+}
+
+
+
