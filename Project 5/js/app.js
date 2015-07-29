@@ -286,28 +286,11 @@ ko.bindingHandlers.executeOnEnter = {
     }
 };
 
-	// self.addLang = function(event, ui){
- //        $(event.target).val("");
- //        console.log(ui.item);
- //        return false;
- //    }
-
-// ko.components.register('message-editor', {
-//     viewModel: function(params) {
-//         self.searchType = ko.observable(params);
-//     },
-//     template: ''
-// });
-
-// ko.bindingHandlers.ko_autocomplete = {
-//     init: function (element, params) {
-//         $(element).autocomplete(params());
-//     },
-//     update: function (element, params) {
-//         $(element).autocomplete("option", "source", params().source);
-//     }
-// };
-
+	// self.searchOptions = ko.computed(function() {
+	// 	return ko.utils.arrayMap(self.schools(), function(item) {
+ //        	return item.schoolType;
+ //    	});
+	// }, this);
 
 	// var geocoder = new google.maps.Geocoder();
 		// geocoder.geocode({address: "95008"},
