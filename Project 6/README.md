@@ -2,7 +2,7 @@
 
 The project showcases testing of web projects using Jasmine. In this project, we will be testing the feed web page of Udacity. 
 ## Link 
-The actual web page with the test cases can be accessed at http://nvjustdev.github.io/portfolio/Project%206/
+The actual web page with the test cases can be accessed at [here]http://nvjustdev.github.io/portfolio/Project%206/
 
 
 ## Why this Project?
