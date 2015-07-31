@@ -2,7 +2,7 @@
 
 The project showcases testing of web projects using Jasmine. In this project, we will be testing the feed web page of Udacity. 
 ## Link 
-The actual web page with the test cases can be accessed at [here]http://nvjustdev.github.io/portfolio/Project%206/
+The actual web page with the test cases can be accessed at http://nvjustdev.github.io/portfolio/Project%206/
 
 
 ## Why this Project?
@@ -56,3 +56,6 @@ I learned how to use Jasmine to write a number of tests against a pre-existing a
 ### Check Linear Digressions Feed page
 - Test to see that there are any subtitles for the feeds
 - Test to see that the URLs start with http
+
+### Email Notification (Future)
+- Test if there is a place to sign up for email notification
