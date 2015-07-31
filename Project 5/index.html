@@ -26,9 +26,10 @@
 	<!-- This is the search bar -->
 	<div class="searchSection" data-bind="visible: shouldShowSearchSection">
 		<form data-bind="submit: filterSchoolsByType">
-			<input id="filterField" type="text" placeholder="Filter the school list by type" data-bind="jqAuto: { value: searchType, source: searchOptions }, selectOnFocus: true, executeOnEnter: filterSchoolsByType" >
+			<!-- Adding a title to show as tool tip on mouse over -->
+			<input id="filterField" type="text" placeholder="Filter the school list by type" title="The school type can be 'Elementary', 'Middle', 'High', and 'Private'" data-bind="jqAuto: { value: searchType, source: searchOptions }, selectOnFocus: true, executeOnEnter: filterSchoolsByType" >
 			<!-- <input id="filterField" type="text" placeholder="Filter the school list by type" data-bind="jqAuto: { value: searchType, source: searchOptions }, selectOnFocus: true" > -->
-			<input type="submit" value="Look up" id="submit">
+			<input type="submit" value="Look up" id="submit" class="buttonClass">
 			<span data-bind="visible: searchType().length > 0, text: "></span>
 			<p data-bind="visible: searchType().length > 0, click: clearFilter" class="clearbutton">Clear Search</p>
 		</form>
@@ -37,16 +38,16 @@
 	<!-- This is the toggle color coded marker section -->
 	<div class="colorCodedSection" data-bind="visible: shouldShowSearchSection">
 		<form data-bind="submit: toggleColorCodedMarkers">
-			<input type="submit" data-bind="value: toggleButtonName" id="toggle">
+			<input type="submit" data-bind="value: toggleButtonName" id="toggle" class="buttonClass">
 		</form>
 		<div class="legend" data-bind="visible: isColorMarkerShown">
-			<h2>Color Legend</h2>
+			<h2>Icon Legend</h2>
 			<ul id="legend-list">
-				<li id="elementary">Elementary Schools</li>
-				<li id="middle">Middle Schools</li>
-				<li id="high">High Schools</li>
-				<li id="private">K12 Private Schools</li>
-				<li id="k8">K8 Private Schools</li>
+				<li id="elementary"><img src="images/blue-dot.png" alt="Blue">Elementary Schools</li>
+				<li id="middle"><img src="images/yellow-dot.png" alt="Yellow">Middle Schools</li>
+				<li id="high"><img src="images/green-dot.png" alt="Green">High Schools</li>
+				<li id="private"><img src="images/purple-dot.png" alt="Purple">K12 Private Schools</li>
+				<li id="k8"><img src="images/red-dot.png" alt="Red">K8 Private Schools</li>
 			</ul>
 		</div>
 	</div>

@@ -6,10 +6,15 @@
     top: 0;
 }
 
+.buttonClass {
+	color: #fff;
+	background-color: #4d90fe;
+}
+
 .searchSection {
   position: absolute;
   top: 25px;
-  right: 10px;
+  left: 75px;
   background-color: rgba(0,0,255,0.1);
   border: 1px solid gray;
   padding: 10px;
@@ -20,14 +25,15 @@
   position: absolute;
   top: 75px;
   right: 10px;
-  background-color: rgba(125,125,125,0.1);
+  /*background-color: rgba(125,125,125,0.1);*/
+  background-color: #fff;
   border: 1px solid gray;
   padding: 10px;
   opacity: 1;
 }
 
 .searchSection input {
-  width: 175px;
+  width: 400px;
   padding: 5px;
 }
 
@@ -69,7 +75,7 @@
 	margin: 20px 0 -10px 0;
 }
 
-#elementary {
+/*#elementary {
 	color: blue;
 }
 
@@ -87,7 +93,7 @@
 
 #k8 {
 	color: red;
-}
+}*/
 
 .listViewSection {
 	  -webkit-box-sizing: border-box;

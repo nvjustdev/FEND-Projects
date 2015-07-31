@@ -1,5 +1,4 @@
 /* MODEL SECTION */
-
 /*
 The following is the class School that has the list of all the schools as retrieved from the data APIs
 The class School has the following attributes:
@@ -286,23 +285,26 @@ ko.bindingHandlers.executeOnEnter = {
     }
 };
 
-	// self.searchOptions = ko.computed(function() {
-	// 	return ko.utils.arrayMap(self.schools(), function(item) {
- //        	return item.schoolType;
- //    	});
-	// }, this);
+/* TRIAL AREA */
+//Search options as a computed ko
+// self.searchOptions = ko.computed(function() {
+// 	return ko.utils.arrayMap(self.schools(), function(item) {
+//        	return item.schoolType;
+//    	});
+// }, this);
 
-	// var geocoder = new google.maps.Geocoder();
-		// geocoder.geocode({address: "95008"},
- //    function(results_array, status) {
- //        lat = results_array[0].geometry.location.lat();
- //        lng = results_array[0].geometry.location.lng();
- //        console.log("lat = " + lat + " long = " + lng);
-	// });
-	// var geocoder = new google.maps.Geocoder();
-		// geocoder.geocode({address: "95008"},
- //    function(results_array, status) {
- //        lat = results_array[0].geometry.location.lat();
- //        lng = results_array[0].geometry.location.lng();
- //        console.log("lat = " + lat + " long = " + lng);
-	// });
+//Zipcode to Lat/Long conversion
+// var geocoder = new google.maps.Geocoder();
+// geocoder.geocode({address: "95008"},
+//    function(results_array, status) {
+//        lat = results_array[0].geometry.location.lat();
+//        lng = results_array[0].geometry.location.lng();
+//        console.log("lat = " + lat + " long = " + lng);
+// });
+// var geocoder = new google.maps.Geocoder();
+// geocoder.geocode({address: "95008"},
+//    function(results_array, status) {
+//        lat = results_array[0].geometry.location.lat();
+//        lng = results_array[0].geometry.location.lng();
+//        console.log("lat = " + lat + " long = " + lng);
+// });
