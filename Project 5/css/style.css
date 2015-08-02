@@ -6,6 +6,12 @@
     top: 0;
 }
 
+.menu {
+	position: absolute;
+	top: 50px
+	left: 50px;
+}
+
 .buttonClass {
 	color: #fff;
 	background-color: #4d90fe;
@@ -87,26 +93,6 @@
 	margin: 20px 0 -10px 0;
 }
 
-/*#elementary {
-	color: blue;
-}
-
-#middle {
-	color: yellow;
-}
-
-#high {
-	color: green;
-}
-
-#private {
-	color: purple;
-}
-
-#k8 {
-	color: red;
-}*/
-
 .listViewSection {
 	  -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -131,5 +117,24 @@
 	text-align: center;
 }
 
+#attribution {
+	position: absolute;
+	bottom: 25px;
+	left: 25px;
+	color: rgba(255,255,255);
+}
+
+/* Smartphones (portrait) */
+@media only screen and (max-width: 480px) {
+  body { font-size: 12px;}
+  header p { padding-left: 4.5em;}
+  .listViewSection { display: none;}
+  .colorCodedSection {display: none;}
+  .searchSection input { width: 200px;}
+  .searchSection {
+  position: absolute;
+  top: 15px;
+  left: 15px;}
+}
 
 

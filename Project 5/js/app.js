@@ -124,7 +124,9 @@ function appViewModel() {
 			if (xml.indexOf("error") === -1) {
 				//Got a response from Great Schools
 				clearTimeout(self.greatSchoolsTimeout);
-				$('#loading').html('<article><h2>Got the School info from GreatSchools.org</h2></article>');
+				$('#loading').html(
+					'<article><h2>Got the School info from GreatSchools.org</h2></article>'
+				);
 				self.isGettingInfoFromApi(true);
 			}
 
@@ -134,7 +136,8 @@ function appViewModel() {
 				//If the response contains the zip code, then store the school; Else ignore the school
 				if ($(this).find('address').text().indexOf(self.zipcode()) > -1) {
 					counter++;
-					$('#loading').html('<article><h2>Found '+ counter +'schools in 95014</h2></article>');
+					$('#loading').html('<article><h2>Found ' + counter +
+						'schools in 95014</h2></article>');
 					self.isGettingInfoFromApi(true);
 
 					//Process the information from Great Schools
@@ -146,7 +149,7 @@ function appViewModel() {
 					schoolGrade = $(this).find('gradeRange').text();
 
 					//Calculating the school type based on the procured type and grades associated with the school
-					schoolType = getSchoolType(type, schoolGrade);
+					schoolType = getSchoolType(type, schoolGrade, schoolName);
 
 					//Calling the function that will request the Great Schools REST API for the scores asynchronously
 					getSchoolGreatSchoolsScore(schoolGsId);
@@ -156,11 +159,11 @@ function appViewModel() {
 						schoolLatitude, schoolLongitude, '', ''));
 				}
 			});
-		})
+		});
 	}
 
 	/* Get the type based on the Great Schools type and school grades */
-	function getSchoolType(type, grade) {
+	function getSchoolType(type, grade, name) {
 		//If the type is private, then marking the school type as private
 		if (type === 'private') {
 			return "Private";
@@ -171,6 +174,7 @@ function appViewModel() {
 					return 'High';
 				case 'K-5':
 				case 'K-6':
+				case 'PK-5':
 					return 'Elementary';
 				case '6-8':
 				case '7-8':
@@ -197,7 +201,8 @@ function appViewModel() {
 		self.isGettingInfoFromApi(true); //Still loading
 
 		var score,
-			url = "http://api.greatschools.org/school/tests/CA/" + gsId + "?key=kge2fgxsc82fv6mvydwjrqxx",
+			url = "http://api.greatschools.org/school/tests/CA/" + gsId +
+			"?key=kge2fgxsc82fv6mvydwjrqxx",
 			yql = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(
 				'select * from xml where url="' + url + '"') + '&format=xml&callback=?';
 
@@ -224,10 +229,8 @@ function appViewModel() {
 
 			//If the number of schools, scores, reviews and the number of markers match, call makeMarkers
 			if ((self.schools().length === self.schoolScores().length) && !self.isMakingMarkers()) {
-				// self.isGettingInfoFromApi(false);
+				//Reorder the school scores array to match the schools array
 				reorderArray(self.schoolScores(), self.schools());
-				// reorderArray(self.schoolReviews(), self.schools());
-				// makeMarkers(self.schools());
 				//Sending out request to get yelp reviews
 				findSchoolReview(self.zipcode, self.schools());
 			} else {
@@ -239,7 +242,7 @@ function appViewModel() {
 				self.isGettingInfoFromApi(true); //Still loading
 				self.isMakingMarkers(false); //Still not making markers
 			}
-		})
+		});
 	}
 
 	//Error handling if Yelp fails to load
@@ -332,8 +335,8 @@ function appViewModel() {
 		var results = data.businesses;
 
 		if (results.length > 0) {
-			for (result in results) {
-				var school = results[result];
+			for (var index = 0; index < results.length; index++) {
+				var school = results[index];
 
 				if ((name === school.name) || (name.indexOf(school.name) > -1) || (school.name
 						.indexOf(name) > -1)) {
@@ -352,8 +355,8 @@ function appViewModel() {
 		var results = data.businesses;
 
 		if (results.length > 0) {
-			for (result in results) {
-				var school = results[result];
+			for (var index = 0; index < results.length; index++) {
+				var school = results[index];
 
 				if ((name === school.name) || (name.indexOf(school.name) > -1) || (school.name
 						.indexOf(name) > -1)) {
@@ -361,9 +364,9 @@ function appViewModel() {
 				}
 			}
 
-			return 'No reviews found';
+			return 'http://www.yelp.com';
 		} else {
-			return 'No reviews found';
+			return 'http://www.yelp.com';
 		}
 	}
 
@@ -417,7 +420,7 @@ function appViewModel() {
 	this.setCurrentSchoolIndex = function(clickedSchoolIndex) {
 		self.currentSchoolIndex(clickedSchoolIndex()); //Set the index in the variable
 		filterSchoolsByIndex(self.currentSchoolIndex()); //Trigger filtering
-	}
+	};
 
 	//Show only the clicked school
 	function filterSchoolsByIndex(clickedSchoolIndex) {
@@ -450,14 +453,14 @@ function appViewModel() {
 				self.classifiedMapMarkers()[index].marker.setVisible(false); //Hide the colored markers
 			});
 		}
-	}
+	};
 
 	/* Map related actions */
 	//Initialize the map
 	function initialize() {
 		map = new google.maps.Map(document.getElementById('googlemap-canvas'), {
-			//Setting the zoom to be 14-just right to show a reasonable amount of the schools in the neighborhood
-			zoom: 14,
+			//Setting the zoom to be 13-just right to show a reasonable amount of the schools in the neighborhood
+			zoom: 13,
 			//centering around the latitude, longitude
 			center: {
 				lat: self.latitude(),
@@ -505,8 +508,9 @@ function appViewModel() {
 					currentSchool.schoolLongitude),
 				contentString;
 
-			if ((typeof currentSchoolYelpInfo.reviewUrl != undefined) || (
-					currentSchoolYelpInfo.reviewUrl != 'No reviews found')) {
+			if ((typeof currentSchoolYelpInfo.reviewUrl !== undefined) || (
+					currentSchoolYelpInfo.reviewUrl != 'No reviews found') || (
+					currentSchoolYelpInfo.reviewUrl != 'http://www.yelp.com')) {
 				contentString = '<div id="infowindow">' +
 					'<h2>' + currentSchool.schoolName + '</h2>' +
 					'<p class="score">GreatSchool Score: ' + currentSchoolScore.schoolScore +
