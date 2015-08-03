@@ -102,7 +102,7 @@ function appViewModel() {
 	function getSchools(zipcode) {
 		//Get the schools in the zipcode from GreatSchools.org
 		var url =
-			"http://api.greatschools.org/schools/nearby?key=kge2fgxsc82fv6mvydwjrqxx&state=CA&zip=95014",
+			"http://api.greatschools.org/schools/nearby?key=[APIKEY]&state=CA&zip=95014",
 			//Adding the yahoo proxy for making the call to the GreatSchools.org REST API
 			yql = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(
 				'select * from xml where url="' + url + '"') + '&format=xml&callback=?';
@@ -202,7 +202,7 @@ function appViewModel() {
 
 		var score,
 			url = "http://api.greatschools.org/school/tests/CA/" + gsId +
-			"?key=kge2fgxsc82fv6mvydwjrqxx",
+			"?key=[APIKEY]",
 			yql = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(
 				'select * from xml where url="' + url + '"') + '&format=xml&callback=?';
 
@@ -261,10 +261,10 @@ function appViewModel() {
 
 	function yelpSearch(zipCode, schoolName, gsId, callback) {
 		var auth = {
-			consumerKey: "NrQS4PQoWHfdK6uJSjj6HA",
-			consumerSecret: "5YiLiGo3wmF6oBRUe3fJSBaTQfw",
-			accessToken: "FS9x9XyEBQDxH4rcT9eXm26yRQoqOB9f",
-			accessTokenSecret: "xO1PqPj_3BIL_oG87nkq6tZe-hw",
+			consumerKey: "consumerKey",
+			consumerSecret: "consumerSecret",
+			accessToken: "accessToken",
+			accessTokenSecret: "accessTokenSecret",
 			serviceProvider: {
 				signatureMethod: "HMAC-SHA1"
 			}
