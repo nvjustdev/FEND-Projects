@@ -1,0 +1,187 @@
+#googlemap-canvas {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.menu {
+	position: absolute;
+	top: 50px
+	left: 50px;
+}
+
+.buttonClass {
+	color: #fff;
+	background-color: #4d90fe;
+}
+
+#loading {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  max-width: 100%;
+  /*width: 500px;*/
+  text-align: center;
+  background-color: rgba(0,0,255,0.1);
+  border: 1px solid gray;
+  padding: 10px;
+  opacity: 1;
+}
+
+.searchSection {
+  position: absolute;
+  top: 25px;
+  left: 75px;
+  background-color: rgba(0,0,255,0.1);
+  border: 1px solid gray;
+  padding: 10px;
+  opacity: 1;
+}
+
+.colorCodedSection {
+  position: absolute;
+  top: 75px;
+  right: 10px;
+  /*background-color: rgba(125,125,125,0.1);*/
+  background-color: #fff;
+  border: 1px solid gray;
+  padding: 10px;
+  opacity: 1;
+}
+
+.searchSection input {
+  width: 400px;
+  padding: 5px;
+}
+
+.reviewSection {
+	  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  background: rgba(255,255,255, 0.9);
+  width: 25%;
+  max-height: 90%;
+  border: 1px solid gray;
+}
+
+.clearbutton {
+	text-decoration: underline;
+	color: rgb(255, 0, 0);
+	font-size: 16px;
+}
+
+#submit {
+	width: 60px;
+	font-weight: bolder;
+}
+
+#toggle {
+	width: 150px;
+}
+
+#legend-list {
+	list-style-type: none;
+	float: left;
+	font-weight: bold;
+	padding: 0;
+}
+
+.legend h2 {
+	margin: 20px 0 -10px 0;
+}
+
+.listViewSection {
+	  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  background: rgba(255,255,255, 0.9);
+  width: 25%;
+  max-height: 100%;
+  border: 1px solid gray;
+  overflow: scroll;
+  font-size: 10px;
+  max-width: 300px;
+  font-size: 16px;
+}
+
+.listViewSection ul {
+	list-style-type: none;
+	text-align: left;
+	padding: 10px;
+	margin: 0 0 10px 0;
+}
+
+.listViewSection h2 {
+	margin: 10px 10px 0 10px;
+	text-align: center;
+}
+
+#attribution {
+	position: absolute;
+	bottom: 0px;
+	left: 10px;
+	color: rgba(255,255,255);
+}
+
+/* Smartphones (portrait) */
+@media only screen and (max-width: 480px) {
+  body { font-size: 12px;}
+  header p { padding-left: 4.5em;}
+  .listViewSection { display: none;}
+  .colorCodedSection {display: none;}
+  .searchSection input { width: 200px;}
+  .searchSection {
+  position: absolute;
+  top: 15px;
+  left: 15px;}
+}
+
+@media only screen and (min-width: 481px) and (max-width: 750px) {
+body { font-size: 12px;}
+  header p { padding-left: 4.5em;}
+    .listViewSection {
+    max-height: 25%;
+    width: 240px;
+    font-size: 12px;
+    bottom: 25px;
+    right: 15px;
+  }
+  .colorCodedSection {float: left;}
+  .searchSection input { width: 200px;}
+  .searchSection {
+  position: absolute;
+  top: 15px;
+  left: 15px;}
+}
+
+@media only screen and (min-width: 751px) and (max-width: 1000px) {
+body { font-size: 14px;}
+  header p { padding-left: 4.5em;}
+  .listViewSection { max-height: 30%; font-size: 14px; width: 260px;}
+  /*.colorCodedSection {display: none;}*/
+  .searchSection input { width: 200px;}
+  .searchSection {
+  position: absolute;
+  top: 15px;
+  left: 15px;}
+}
+
+@media only screen and (min-width: 1001px) and (max-width: 1200px) {
+body { font-size: 14px;}
+  header p { padding-left: 4.5em;}
+  .listViewSection { max-height: 30%; font-size: 15px}
+  /*.colorCodedSection {display: none;}*/
+  .searchSection input { width: 200px;}
+  .searchSection {
+  position: absolute;
+  top: 15px;
+  left: 15px;}
+}
+
+

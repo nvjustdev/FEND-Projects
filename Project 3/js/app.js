@@ -123,6 +123,7 @@ Enemy.prototype.update = function(dt) {
 	this.checkCollisions();
 };
 
+//Check for enemy - player collisions
 Enemy.prototype.checkCollisions = function() {
 	if ((this.y === player.y) && (this.x >= player.x - 30) && (this.x <= player.x +
 			30)) {
@@ -154,6 +155,7 @@ var Gem = function() {
 	this.y = possibleGemY[Math.floor(Math.random() * 3)]; //One of the possible 3 y values
 };
 
+//Update the gem
 Gem.prototype.update = function() {
 	if ((player.y === this.y) && (this.x >= player.x - 30) && (this.x <= player.x +
 			30)) {
@@ -215,12 +217,14 @@ var Player = function() {
 	this.reset(); //Reset if player lost life, or got collectible
 };
 
+//Reset player
 Player.prototype.reset = function() {
 	//Default Location
 	this.x = 200;
 	this.y = 380;
 };
 
+//Set player's avatar
 Player.prototype.avatarImage = function() {
 	//Based on the chosen avatar, set the avatar image
 	this.sprite = avatarImages[avatarIndex];
@@ -382,8 +386,8 @@ function difficultyClick(buttonID, level) {
 	document.getElementById('gameOver').style.display = 'none';
 }
 
+//Now the selections are complete, show the summary of selections
 function showDifficultySelection() {
-	//Now the selections are complete, show the summary of selections
 	//Hide other sections
 	document.getElementById('chosenAvatar').src = avatarImage(avatarIndex);
 	document.getElementById('avatarSelectionId').style.display = 'none';
@@ -398,8 +402,8 @@ function showDifficultySelection() {
 	}
 }
 
+//Method to start the game
 function startClick() {
-	//Game mode
 	//Show the stats on the top of the game area
 	document.getElementById('avatarSelectionId').style.display = 'none';
 	document.getElementById('gameDifficultyId').style.display = 'none';
@@ -412,7 +416,6 @@ function startClick() {
 	document.getElementById('pointsText').innerHTML = 'Points: ' + totalPoints;
 	document.getElementById('timerText').innerHTML = 'Timer: ' + gameMinutes +
 		': 00 mins';
-
 
 	//If the selections are ready, start countdown and game
 	if ((selections[0] === true) && (selections[1] === true)) {
@@ -428,6 +431,7 @@ function startClick() {
 	}
 }
 
+//Method to start the countdown
 function countdown(minutes) {
 	var seconds = 60;
 	var mins = minutes;
@@ -463,6 +467,7 @@ function countdown(minutes) {
 	tick(); //Call tick
 }
 
+//Method to stop the game
 function stopGame() {
 	//Reseting values
 	gameMinutes = 0;

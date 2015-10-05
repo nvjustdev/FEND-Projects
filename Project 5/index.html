@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<meta name=description content="School Finder">
+	<meta name=author content="School Finder">
+
+	<!-- Title -->
+	<title>School Score / Review Finder</title>
+
+	<!-- Meta Information -->
+	<meta name="viewport" content="width=device-width initial-scale=1.0, user-scalable=no">
+	<meta charset="utf-8">
+
+	<!-- CSS Stylesheets -->
+	<link rel="stylesheet" type="text/css" href="css/style.min.css">
+	<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.min.css"
+	rel="stylesheet">
+
+	<!-- JavaScripts -->
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<!--<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>-->
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+	<script src="http://oauth.googlecode.com/svn/code/javascript/oauth.js"></script>
+	<script src="http://oauth.googlecode.com/svn/code/javascript/sha1.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places?key=AIzaSyARNPk6ayJtO0mX-dKPhcuUL1XkbfyLpwI"></script>
+</head>
+
+<body>
+	<!-- This is the place where we'll be displaying the map -->
+	<div id="googlemap-canvas"></div>
+
+	<div id="loading" data-bind="visible: isGettingInfoFromApi">
+	</div>
+
+	<!-- This is the search bar -->
+	<div class="searchSection" data-bind="visible: shouldShowSearchSection() && !isGettingInfoFromApi()">
+		<form data-bind="submit: filterSchoolsByType">
+			<!-- Adding a title to show as tool tip on mouse over -->
+			<input id="filterField" type="text" placeholder="Filter the school list by type"
+			title="The school type can be 'Elementary', 'Middle', 'High', and 'Private'" data-bind="jqAuto: { value: searchType, source: searchOptions }, selectOnFocus: true, executeOnEnter: filterSchoolsByType">
+			<input type="submit" value="Look up" id="submit" class="buttonClass">
+			<span data-bind="visible: searchType().length > 0, text: "></span>
+			<p data-bind="visible: searchType().length > 0, click: clearFilter" class="clearbutton">Clear Search</p>
+		</form>
+	</div>
+
+	<!-- This is the toggle color coded marker section -->
+	<div class="colorCodedSection" data-bind="visible: shouldShowSearchSection() && !isGettingInfoFromApi()">
+		<form data-bind="submit: toggleColorCodedMarkers">
+			<input title="Click on this button to show or hide the school type based color coded markers"
+			type="submit" data-bind="value: toggleButtonName" id="toggle" class="buttonClass">
+		</form>
+		<div class="legend" data-bind="visible: isColorMarkerShown">
+			<h2>Icon Legend</h2>
+			<ul id="legend-list">
+				<li id="elementary"><img src="images/blue-dot.png" alt="Blue">Elementary Schools</li>
+				<li id="middle"><img src="images/yellow-dot.png" alt="Yellow">Middle Schools</li>
+				<li id="high"><img src="images/green-dot.png" alt="Green">High Schools</li>
+				<li id="private"><img src="images/purple-dot.png" alt="Purple">K12 Private Schools</li>
+				<li id="k8"><img src="images/red-dot.png" alt="Red">K8 Private Schools</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- This is the list view section -->
+	<div class="listViewSection" data-bind="visible: shouldShowSearchSection() && !isColorMarkerShown() && !isGettingInfoFromApi()">
+		<h2>List of Schools</h2>
+		<ul data-bind="foreach: schools">
+			<li title="Click on the school name to filter and also get more information" data-bind="text: schoolName, click: $parent.setCurrentSchoolIndex.bind($data, $index)"></li>
+		</ul>
+	</div>
+
+	<div id="attribution">
+		<footer>
+			<p>Data powered by Google Maps, GreatSchools and Yelp</p>
+		</footer>
+	</div>
+
+	<!-- JavaScripts -->
+	<script type="text/javascript" src="js/knockout-jqAutocomplete.js"></script>
+	<script type="text/javascript" src="js/app.min.js"></script>
+</body>
+
+</html>
